@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * Main - entry point of the program
+ * main - Entry point of the program
  *
  * Description: This is a random integer generator that prints
  * the integer and states whether it is positive, zero, or
