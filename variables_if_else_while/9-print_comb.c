@@ -1,44 +1,30 @@
 #include <stdio.h>
 
 /**
- * main - Entry point of the program
+ * main - entry to the program
  *
- * Description: this program prints out every possible combination
- * of single digits in ascending order, separated by a comma and a space.
+ * Description: This program prints every combinable single-digit number
+ * in ascending order, separated by a comma and an empty space.
  *
- * Return: always 0 (success)
+ * Return: always 0 (Success)
  *
  */
 
 int main(void)
 {
-	int comb[10][10];
-	int a;
-	int b;
-	int number;
+	int i;
 
-	for (a = 0; a < 10; a++)
+	for (i = 0; i < 10; i++)
 {
-		for (b = 0; b < 10; b++)
-{
-			comb[a][b] = a * 10 + b;
-}
-}
-	for (a = 0; a < 10; a++)
-{
-		for (b = 0; b < 10; b++)
-{
-			number = comb[a][b];
+	putchar('0' + i);
 
-			putchar('0' + number / 10);
-			putchar('0' + number % 10);
-
-			if (b <= 9)
+	if (i <= 9)
 {
-				putchar(',');
-				putchar(' ');
+		putchar(',');
+		putchar(' ');
 }
 }
-}
+	putchar('\n');
+
 	return (0);
 }
