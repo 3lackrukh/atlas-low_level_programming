@@ -1,8 +1,9 @@
 #include "main.h"
 
 /**
- * Description: this program prints the alphabet, in lowercase,
- * followed by ainewline using only _putchar.
+ * Description: this program uses a nested for loop
+ * to print the alphabet, in lowercase,
+ * followed by a newline 10x over.
  *
  * Return: Always 0
  *
