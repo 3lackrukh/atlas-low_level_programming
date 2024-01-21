@@ -1,10 +1,9 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - entry point of the program
  *
- * Description: this program uses the putchar command in a for loop
- * to print "_putchar" followed by a new line.
+ * Description: prints _putchar
  *
  * Return: always 0 (success)
  */
@@ -16,10 +15,10 @@ int main(void)
 
 	for (i = 0; var[i] != '\0'; i++)
 {
-	putchar(var[i]);
+	_putchar(var[i]);
 }
 
-	putchar('\n');
+	_putchar('\n');
 
 	return (0);
 }
