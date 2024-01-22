@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * Description: this program prints the alphabet, in lowercase,
- * followed by ainewline using only _putchar.
+ * print_alphabet - prints the alphabet, in lowercase,
+ * followed by a newline using only _putchar.
  *
  * Return: Always 0
  *
