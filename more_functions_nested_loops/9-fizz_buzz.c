@@ -43,7 +43,7 @@ int main(void)
 			printf("%d ", i);
 		}
 	}
-	printf("\b\n");
+	printf("\n");
 return (0);
 }
 
