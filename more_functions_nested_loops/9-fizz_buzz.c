@@ -39,7 +39,7 @@ int main(void)
 			printf("%d ", i);
 		}
 	}
-	printf("\n");
+	printf("\b\n");
 return (0);
 }
 
