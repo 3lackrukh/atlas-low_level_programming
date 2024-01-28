@@ -5,10 +5,17 @@
  *
  * @s: the string to be checked.
  *
- * return: always (0). success. 
+ * Return: The length of the string.
  */
 
 int _strlen(char *s)
 {
+	char *p = s;
 
-	
+	while (*p != '\0')
+	{
+		p++;
+	}
+
+	return (p - s);
+}
