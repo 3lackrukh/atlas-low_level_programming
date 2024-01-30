@@ -14,18 +14,21 @@ int _atoi(char *s)
 	int op = 1;
 	int i = 0;
 
-	while (s[i] == '+')
+	while (s[i] != '\0')
 	{
-		i++;
+		if (s[i] == '-' || s[i] == '+')
+		{
+			op = (s[i++] == '-') ? -1 : 1;
+		}
+		else if (s[i] >= '0' && s[i] <= '9')
+		{
+			res = res * 10 + (s[i++] - '0');
+		
+		}
+		else
+		{
+			i++;
+		}
 	}
-	if (s[i] == '-' || s[i] == '+')
-	{
-		op = (s[i++] == '-') ? -1 : 1;
-	}
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		res = res * 10 + (s[i++] - '0');
-	}
-}
 return (op * res);
 }
