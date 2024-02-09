@@ -15,10 +15,10 @@
  * If the number does not have a natural square root, -1 (error).
  */
 
-int _fk_this(int n, int low, int high)
+long int _fk_this(int n, int low, int high)
 {
 	int mid = (high - low) / 2 + low;
-	int res = mid * mid;
+	long int res = (long int)mid * mid;
 
 	if (n < 0)
 	{
@@ -58,9 +58,5 @@ return (0);
 
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-	{
-		return (-1);
-	}
 	return (_fk_this(n, 0, n));
 }
