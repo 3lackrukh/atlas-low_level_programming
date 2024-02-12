@@ -31,7 +31,7 @@ int _isdigit(char *c)
 
 int main(int argc, char *argv[])
 {
-	int i, j; 
+	int i, j;
 	int s = 0;
 
 	if (argc >= 3)
