@@ -45,10 +45,6 @@ char *str_concat(char *s1, char *s2)
 	{
 		return (NULL);
 	}
-	if ((l1 <= 0) || (l2 <= 0))
-	{
-		return (NULL);
-	}
 	for (i = 0; i < l1; i++)
 	{
 		scon[i] = s1[i];
