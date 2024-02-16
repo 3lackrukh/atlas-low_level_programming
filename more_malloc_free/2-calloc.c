@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 /**
  * _calloc- allocates memory for an array of elements of variable size.
@@ -14,6 +14,7 @@
 
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
+
 	unsigned int i = 0;
 	unsigned int *p;
 
@@ -21,7 +22,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-	p = malloc(nmemb * size * sizeof(unsigned int));
+	p = malloc(sizeof(unsigned int) * nmemb);
 	if (p == NULL)
 	{
 		return (NULL);
@@ -31,5 +32,5 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		p[i] = 0;
 		i++;
 	}
-	return ((void *)p);
+	return (p);
 }
