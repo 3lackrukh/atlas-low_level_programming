@@ -1,62 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 /**
- * _strlen- returns the length of a string.
+ * _calloc- allocates memory for an array of elements of variable size.
  *
- * @s: the string to be measured.
+ * @nmemb: the number of elements.
  *
- * Return: the length of the string.
+ * @size: the data-type to be allocated for.
+ *
+ * Return: a pointer to allocated memory.
  */
 
-int _strlen(char *s)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	if (s == NULL)
-	{
-		return (0);
-	}
-	if (*s != '\0')
-	{
-		s++;
-		return (1 + _strlen(s));
-	}
-	return (0);
-}
-/**
- * str_nconcat- allocates enough memory to copy two strings
- * and concatenates the two strings, returning a pointer to
- * the new string.
- *
- * @s1: the first string to be copied.
- *
- * @s2: the second string to be copied.
- *
- * Return: if adequate memory is allocated, returns a pointer
- * to the new string, else returns NULL.
- */
+	unsigned int i = 0;
+	unsigned int *p;
 
-char *string_nconcat(char *s1, char *s2, unsigned int n)
-{
-	int i, k, l;
-	char *scon;
-	
-	l = _strlen(s1);
-	scon = malloc(sizeof(char) * ((l + n) + 1));
-	if (scon == (NULL))
+	if ((nmemb == 0) || (size == 0))
 	{
 		return (NULL);
 	}
-	if (s2 == NULL)
+	p = malloc(nmemb * size * sizeof(unsigned int));
+	if (p == NULL)
 	{
-		s2 = "";
+		return (NULL);
 	}
-	for (i = 0; i < l; i++)
+	while (i < nmemb * size)
 	{
-		scon[i] = s1[i];
-	}
-	for (k = 0; k < n; k++)
-	{
-		scon[i] = s2[k];
+		p[i] = 0;
 		i++;
 	}
-	scon[i++] = '\0';
-	return (scon);
-	free(scon);
+	return ((void *)p);
 }
