@@ -12,8 +12,9 @@
 
 void *malloc_checked(unsigned int b)
 {
-	size_t size = sizeof(b);
-	void *allocation = malloc(size * b);
+	int *allocation;
+
+	allocation = malloc(b);
 
 	if (allocation == (NULL))
 	{
