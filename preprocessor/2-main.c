@@ -9,6 +9,6 @@
 
 int main(void)
 {
-	printf("02-main.c\n");
+	printf("2-main.c\n");
 	return (0);
 }
