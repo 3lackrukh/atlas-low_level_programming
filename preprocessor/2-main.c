@@ -9,6 +9,6 @@
 
 int main(void)
 {
-	printf("2-main.c\n");
+	printf(__BASE_FILE__"\n");
 	return (0);
 }
