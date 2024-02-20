@@ -16,18 +16,22 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 {
 
 	unsigned int i = 0;
-	unsigned int *p;
+	char *p;
+	size_t totsz;
 
 	if ((nmemb == 0) || (size == 0))
 	{
 		return (NULL);
 	}
-	p = malloc(sizeof(unsigned int) * nmemb * size);
+
+	totsz = nmemb * size;
+
+	p = (malloc(totsz));
 	if (p == NULL)
 	{
 		return (NULL);
 	}
-	while (i < nmemb * size)
+	while (i < totsz)
 	{
 		p[i] = 0;
 		i++;
