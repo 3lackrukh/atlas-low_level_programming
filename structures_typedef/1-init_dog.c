@@ -5,7 +5,7 @@
 
 /**
  * init_dog- a function that initializes a variable of the dog struct.
- * 
+ *
  * @d: pointer to the beginning of the struct.
  *
  * @name: pointer to the string containing name.
@@ -22,7 +22,7 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 
 	if (d == NULL)
 	{
-		return (NULL)
+		return;
 	}
 	d->name = name;
 	d->age = age;
