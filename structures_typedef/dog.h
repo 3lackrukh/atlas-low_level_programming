@@ -8,12 +8,12 @@
  * doggos.
  * @name: a char string containing the dogdog's name.
  * @age: a float describing the dog's age... probably in years.
- * @owner: a char string containing the name of their caretaker. 
+ * @owner: a char string containing the name of their caretaker.
  *
  */
 
-typedef struct dog{
-
+typedef struct dog
+{
 char *name;
 float age;
 char *owner;
