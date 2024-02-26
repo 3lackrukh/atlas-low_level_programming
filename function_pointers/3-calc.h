@@ -16,10 +16,6 @@ typedef struct op
 	int (*f)(int a, int b);
 } op_t;
 
-//this file should contain:
-//	all the function prototypes
-//	all the data structures used by the program.
-
 int op_add(int a, int b);
 int op_sub(int a, int b);
 int op_mul(int a, int b);

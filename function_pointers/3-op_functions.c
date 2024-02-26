@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "calc.h"
+#include "3-calc.h"
 #include "function_pointers.h"
 
 /**
@@ -14,9 +14,8 @@
 
 int op_add(int a, int b)
 {
-	int sum = (a + b);
+	return (a + b);
 
-	return (sum);
 }
 
 /**
@@ -30,9 +29,7 @@ int op_add(int a, int b)
 
 int op_sub(int a, int b)
 {
-	int dif = (a - b);
-
-	return (dif);
+	return (a - b);
 }
 
 /**
@@ -46,9 +43,7 @@ int op_sub(int a, int b)
 
 int op_mul(int a, int b)
 {
-	int prd = (a * b);
-
-	return (prd);
+	return (a * b);
 }
 
 /**
@@ -62,9 +57,12 @@ int op_mul(int a, int b)
 
 int op_div(int a, int b)
 {
-	int res = (a / b);
-
-	return (res);
+	if (b == 0)
+	{
+		printf("Error\n");
+		exit (100);
+	}
+	return (a / b);
 }
 
 /**
@@ -78,7 +76,10 @@ int op_div(int a, int b)
 
 int op_mod(int a, int b)
 {
-	int mod = (a % b);
-
-	return (mod);
+	if (b == 0)
+	{
+		printf("Error\n");
+		exit (100);
+	}
+	return (a % b);
 }
