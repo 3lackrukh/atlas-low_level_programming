@@ -10,7 +10,7 @@
  *
  * @s: the string containing the function operator called for.
  *
- * Return: the int result of the operation. 
+ * Return: the int result of the operation.
  */
 
 int (*get_op_func(char *s))(int, int)
@@ -24,15 +24,15 @@ int (*get_op_func(char *s))(int, int)
 		{NULL, NULL}
 	};
 	int i = 0;
-	
+
 	while ((i < 5) && (ops[i].op != NULL))
 	{
 		if (strcmp(s, ops[i].op) == 0)
 		{
-			return ops[i].f;
+			return (ops[i].f);
 		}
 		i++;
 	}
 	printf("Error\n");
-	exit (99);
+	exit(99);
 }
