@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "variadic_functions.h"
 
 /**
@@ -68,9 +70,9 @@ void print_all(const char * const format, ...)
 	while (format && format [i])
 	{
 		k = 0;
-		while (prnt_funcs[k].spec) != (NULL)
+		while (prnt_funcs[k].spec != NULL)
 		{
-			if (strchr(prnt_funcs[k].spec, &format[i]) == 0)
+			if (strchr(prnt_funcs[k].spec, format[i]) == 0)
 			{
 				prnt_funcs[k].func(ape, ptr);
 				ptr = ", ";
