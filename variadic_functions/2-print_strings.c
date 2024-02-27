@@ -46,7 +46,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	fin_str = va_arg(strs, char *);
 	if (fin_str == NULL)
 	{
-		printf("nil\n");
+		printf("(nil)\n");
 	}
 	else
 	{
