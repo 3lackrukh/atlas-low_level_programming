@@ -8,7 +8,7 @@ size_t print_list(const list_t *h)
 {
 	int element_count = 0;
 
-	if (h == NULL);
+	if (h == NULL)
 		return(element_count);
 
 	if (h->str == NULL)
