@@ -8,9 +8,9 @@
  * Return: The length of the string.
  */
 
-int _strlen(char *s)
+int _strlen(const char *s)
 {
-	char *p = s;
+	const char *p = s;
 
 	while (*p != '\0')
 	{
