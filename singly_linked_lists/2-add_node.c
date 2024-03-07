@@ -21,7 +21,13 @@ int _strlen(const char *s)
 }
 
 /**
+ * add_node- adds a new node to the front of a singly linked list.
  *
+ * @head: pointer to a pointer to the initializing node of the list.
+ *
+ * @str: pointer to string data to be held in the new node.
+ *
+ * Return: the address of the new element, or NULL if failure.
  */
 
 list_t *add_node(list_t **head, const char *str)
@@ -29,7 +35,7 @@ list_t *add_node(list_t **head, const char *str)
 	list_t *new_node;
 
 	if (head == NULL)
-		return NULL;
+		return (NULL);
 
 	new_node = NULL;
 	new_node = malloc(sizeof(list_t));
