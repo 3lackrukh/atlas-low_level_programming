@@ -30,14 +30,16 @@ int _strlen(const char *s)
 
 unsigned int binary_to_uint(const char *b)
 {
-	int i;
+	int i, len;
 	unsigned int d = 0;
-	int len = _strlen(b);
 
-	if (b == NULL)
-	{
-		return (0);
-	}
+	 if (b == NULL)
+        {
+                return (0);
+        }
+
+	len = _strlen(b);
+
 	for (i = 0; i < len; i++)
 	{
 		if ((b[i] != '1') &&(b[i] != '0'))
