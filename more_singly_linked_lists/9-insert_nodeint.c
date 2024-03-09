@@ -7,7 +7,7 @@
  *
  * @idx: the index position at which the new node is to be added.
  *
- * @n: integer data to be contained in the new node. 
+ * @n: integer data to be contained in the new node.
  *
  * Return: the address of the new node. or NULL if failure.
  */
