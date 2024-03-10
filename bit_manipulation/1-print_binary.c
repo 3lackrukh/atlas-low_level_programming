@@ -9,12 +9,7 @@ void print_binary(unsigned long int n)
 {
 	int i;
 	int remainder;
-	char *str = malloc(sizeof(char ) * 16);
-
-	if (str == NULL)
-	{
-		return;
-	}
+	char str[16];
 
 	if (n == 0)
 	{
@@ -34,5 +29,4 @@ void print_binary(unsigned long int n)
 		i--;
 		_putchar(str[i]);
 	}
-	free(str);
 }
