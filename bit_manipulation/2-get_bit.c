@@ -1,7 +1,14 @@
 #include "main.h"
 
 /**
+ * get_bit- returns the value of a bit at a given index.
  *
+ * @n: the integer to be checked.
+ *
+ * @index: the position of the integer's binary representation
+ * to be checked.
+ *
+ * Return: the binary value at the indexed position, or -1 if failure.
  */
 
 int get_bit(unsigned long int n, unsigned int index)
