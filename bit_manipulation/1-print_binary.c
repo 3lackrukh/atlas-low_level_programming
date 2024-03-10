@@ -2,7 +2,11 @@
 #include <unistd.h>
 
 /**
+ * print_binary- prints the binary representation of a number.
  *
+ * @n: the integer to be printed in binary.
+ *
+ * Return: nothing.
  */
 
 void print_binary(unsigned long int n)
