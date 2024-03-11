@@ -1,7 +1,14 @@
 #include "main.h"
 
 /**
+ * set_bit- sets the value of a bit to 1 at a given index.
  *
+ * @n: a pointer to the integer whose value is to be set.
+ *
+ * @index: the position of the integer's bimary representation
+ * to be set.
+ *
+ * Return: 1 if success, -1 if failure.
  */
 
 int set_bit(unsigned long int *n, unsigned int index)
