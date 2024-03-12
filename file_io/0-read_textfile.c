@@ -6,22 +6,29 @@
 #include <unistd.h>
 
 /**
+ * read_textfile- reads a text file and prints it to the POSIX
+ * standard output.
  *
+ * @filename: the name of the file to be read.
+ *
+ * @letters: the number of chars to read and print.
+ *
+ * Return: the number of chars actually read and printed.
  */
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd, i;
 	ssize_t bytes_read;
-
 	char *buff = malloc(sizeof(char) * (letters + 1));
+
 	if (buff == NULL)
 		return (0);
 
 	if (filename == NULL)
 		return (0);
-	
-	fd = open (filename, O_RDONLY);
+
+	fd = open(filename, O_RDONLY);
 
 	if (fd == -1)
 	{
@@ -29,7 +36,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	bytes_read = read(fd, buff, letters);
-	
+
 	if (bytes_read == -1)
 	{
 		close(fd);
@@ -42,7 +49,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		_putchar(buff[i]);
 
 	close(fd);
-	free (buff);
+	free(buff);
 
 	return (bytes_read);
 }
