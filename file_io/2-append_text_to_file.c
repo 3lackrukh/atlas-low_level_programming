@@ -6,7 +6,13 @@
 #include <unistd.h>
 
 /**
+ * append_text_to_file- appends text to the end of a file.
  *
+ * @filename: the name of the file to be added to.
+ *
+ * @text_content: a char string to be added to the file.
+ *
+ * Return: 1 on success, -1 if unsuccessful.
  */
 
 int append_text_to_file(const char *filename, char *text_content)
