@@ -54,7 +54,7 @@ int cp_file(const char *file_from, const char *file_to)
 			file_close = close(to_fd);
 			if (file_close == -1)
 			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_to;
+				dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_to);
 				return (100);
 			}
 			return (99);
