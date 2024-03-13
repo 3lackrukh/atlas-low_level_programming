@@ -13,7 +13,7 @@
  *
  * Return: if copy is successful, 0.
  */
-
+//nolint:all
 int cp_file(const char *file_from, const char *file_to)
 {
 	int fr_fd, to_fd;
