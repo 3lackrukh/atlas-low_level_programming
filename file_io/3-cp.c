@@ -5,7 +5,13 @@
 #include <sys/stat.h>
 
 /**
+ * cp_file- copies the content of a file to another file.
  *
+ * @file_from: the file to be copied from.
+ *
+ * @file_to: the file to be copied to.
+ *
+ * Return: if copy is successful, 0.
  */
 
 int cp_file(const char *file_from, const char *file_to)
