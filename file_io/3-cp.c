@@ -11,7 +11,7 @@
 int cp_file(const char *file_from, const char *file_to)
 {
 	int fr_fd, to_fd, file_close;
-	mode_t mode = S_IRUSR | S_IWUSR;
+	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	ssize_t chars_rd;
 	ssize_t chars_wr;
 	
