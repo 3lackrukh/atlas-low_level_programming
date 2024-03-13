@@ -37,7 +37,7 @@ int cp_file(const char *file_from, const char *file_to)
 		exit (99);
 	}
 
-	while((chars_rd = read(fr_fd, buffer, sizeof(buffer))) > 0)
+	while((chars_rd = read(fr_fd, buffer, sizeof(buffer))))
 	{
 		if (chars_rd == -1)
 		{
