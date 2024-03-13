@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
 
 /**
  *
@@ -70,10 +69,10 @@ int cp_file(const char *file_from, const char *file_to)
 	file_close = close(to_fd);
 	if (file_close == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_from);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_to);
 			exit (100);
 		}
-	return (1);
+	return (0);
 }
 
 int main (int argc, char *argv[])
