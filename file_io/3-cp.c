@@ -41,22 +41,22 @@ int cp_file(const char *file_from, const char *file_to)
 
 	while((chars_rd = read(fr_fd, buffer, sizeof(buffer))) > 0)
 	{
-		chars_wr = ]write(to_fd, buffer, chars_rd);
+		chars_wr = write(to_fd, buffer, chars_rd);
 		if (chars_wr != chars_rd)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			file_close = close(fr_fd);
 			if (file_close == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_from);
-			return (100);
-		}
+			{
+				dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_from);
+				return (100);
+			}
 			file_close = close(to_fd);
 			if (file_close == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_to;
-			return (100);
-		}
+			{
+				dprintf(STDERR_FILENO, "Error: Can't close fd %s\n" , file_to;
+				return (100);
+			}
 			return (99);
 		}
 
