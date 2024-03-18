@@ -5,17 +5,21 @@
 
 void print_table (hash_table_t *ht)
 {
-	int i;
+	int i = 0;
+	hash_node_t *current;
 
 	for (i = 0; i < 1024; i++)
 	{
-		if (ht->array[i] == NULL)
+		current = ht->array[i];
+		if (ht->array[i] != NULL)
 		{
-			printf("\t%i\t---\n", i);
-		}
-		else
-		{
-			printf("\t%i\t%s\t%s\n", i, ht->array[i]->key, ht->array[i]->value);
+			printf("\t%i\n", i);
+			while (current != NULL)
+			{
+				printf("\t\t%s\t%s\n", current->key, current->value);
+				current = current->next;
+			}
+			
 		}
 	}
 }
@@ -30,9 +34,9 @@ int main(void)
     hash_table_t *ht;
 
     ht = hash_table_create(1024);
-    hash_table_set(ht, "hetairas", "southern");
-    hash_table_set(ht, "mentioner", "friend");
-    hash_table_set(ht, "heliotropes", "sunbiz");
+    hash_table_set(ht, "holberton", "is cool");
+    hash_table_set(ht, "holberton", "is so cool");
+    hash_table_set(ht, "holberton", "is awesome");
     hash_table_set(ht, "neurospora", "seeded");
     hash_table_set(ht, "depravement", "debauchery");
     hash_table_set(ht, "stylist", "Wynstan");
