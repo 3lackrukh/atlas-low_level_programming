@@ -15,6 +15,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int hash;
+	const char *original_key = key;
 	int index, c;
 	hash_node_t *new_node = malloc(sizeof(hash_node_t));
 
@@ -28,11 +29,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	hash = 5381;
 	while ((c = *key++))
-		hash = ((hash << 5) + hash) +c;
+		hash = ((hash << 5) + hash) + c;
 
 	index = hash % ht->size;
 
-	new_node->key = strdup(key);
+	new_node->key = strdup(original_key);
 	if (new_node->key == NULL)
 	{
 		free(new_node);
