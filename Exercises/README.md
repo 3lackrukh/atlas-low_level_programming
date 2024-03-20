@@ -1,0 +1,1 @@
+This folder contains files and functions used as concept exercises in C programming language.
