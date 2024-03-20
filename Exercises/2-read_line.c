@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main ()
 {
@@ -10,8 +11,14 @@ int main ()
 	if (buffer == NULL)
 		return (-1);
 
-	printf("$ ");
-	getline(&buffer, &buffsize, stdin);
-	printf("%s", buffer);
+	while (1)
+	{
+		printf("$ ");
+		getline(&buffer, &buffsize, stdin);
+		if (strcmp(buffer, "exit") == 0)
+			break;
+		printf("%s", buffer);
+	}
+	free(buffer);
 	return (0);
 }
