@@ -15,7 +15,7 @@ int main ()
 	{
 		printf("$ ");
 		getline(&buffer, &buffsize, stdin);
-		if (strcmp(buffer, "exit") == 0)
+		if (strncmp(buffer, "exit", 4) == 0)
 			break;
 		printf("%s", buffer);
 	}
