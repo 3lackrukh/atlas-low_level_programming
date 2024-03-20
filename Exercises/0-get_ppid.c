@@ -9,7 +9,7 @@
 
 int main (void)
 {
-    ppid_t my_ppid;
+    pid_t my_ppid;
 
     my_ppid = getppid();
     printf("%u\n", my_ppid);
