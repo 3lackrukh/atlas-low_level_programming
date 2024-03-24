@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 extern char **environ;
 
@@ -30,13 +31,12 @@ dliststr_t *create_node(char *value)
 	return (new_node);
 }
 
-void path_list(char *path)
+dliststr_t *path_list(char *path)
 {
 	dliststr_t *head = NULL;
 	dliststr_t *tail = NULL;
 	dliststr_t *new_node;
 	char *token;
-	int i = 1;
 
 	if (path != NULL)
 	{
@@ -59,6 +59,7 @@ void path_list(char *path)
 
 		}
 	}
+	return (head);
 }
 
 char *get_env(const char *name)
@@ -76,14 +77,40 @@ char *get_env(const char *name)
 	return(NULL);
 }
 
+void free_list(dliststr_t *head)
+{
+	dliststr_t *current = head;
+	dliststr_t *next;
+
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current->value);
+		free(current);
+		current = next;
+	}
+}
+
 int main()
 {
 	char *path;
+	dliststr_t *head;
+	dliststr_t *temp;
 
 	path = get_env("PATH");
 	if (path != NULL)
 	{
-		path_list(path);
+		head = path_list(path);
+		if (head != NULL)
+		{
+			temp = head;
+			while (temp != NULL)
+			{
+				printf("%s\n", temp->value);
+				temp = temp->next;\
+			}
+			free_list(head);
+		}
 	}
 	return(0);
 }
