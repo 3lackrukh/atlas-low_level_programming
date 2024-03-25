@@ -2,9 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
-char **tokenize(char *buffer, char *delimiter)
+typedef struct cmd_args
 {
+	char *cmd;
+	char **args;
+} cmd_args;
+
+cmd_args tokenize(char *buffer, char *delimiter)
+{
+	cmd_args result = {NULL, NULL};
 	int str_ct = 0, i = 0, l = 0;
 	unsigned long int k;
 	char **array = NULL;
@@ -21,10 +29,19 @@ char **tokenize(char *buffer, char *delimiter)
 	if (array == NULL)
 	{
 		perror("tokenize malloc array failure");
-		return (NULL);
+		return (result);
 	}
 	
 	portion = strtok(buffer, delimiter);
+	result.cmd = strdup(portion);
+	if (result.cmd == NULL)
+	{
+		perror("Tokenize strdup cmd failure");
+		free(array);
+		return (result);
+	}
+	i++;
+	portion = strtok(NULL, delimiter);
 	while (portion != NULL)
 	{
 		array[i] = strdup(portion);
@@ -34,23 +51,23 @@ char **tokenize(char *buffer, char *delimiter)
 			for (l = 0; l < i; l++)
 				free(array[l]);
 			free(array);
-			return (NULL);
+			free(result.cmd);
+			return (result);
 		}
 		i++;
 		portion = strtok(NULL, delimiter);
 	}
 	array[i] = NULL;
-	return (array);
+	result.args = array;
+	return (result);
 }
-int forkcecute(char **cmd_ln) 
+int forkcecute(cmd_args cmd_ln) 
 {
-	int i = 0;
 	pid_t pid;
-	//char *args[]= {"ls", "-l", "/tmp", NULL};
 	char *envp[] = {NULL};
 
 	/* Check for empty arg array */
-	if (cmd_ln == NULL || cmd_ln[0] == NULL)
+	if (cmd_ln.cmd == NULL) /*|| cmd_ln->args == NULL)*/
 	{
 		perror("forkcecute cmd_ln empty");
 		return (-1);
@@ -64,25 +81,29 @@ int forkcecute(char **cmd_ln)
 	}
 	else if (pid == 0)
 	{
-		// Child process
-		printf("Child process %d executing ls -l /tmp\n", getpid());
-		if (execve(cmd_ln[0], cmd_ln, envp) == -1) {
-                perror("execve failed");
-                exit(EXIT_FAILURE);
-            }
-            exit(EXIT_SUCCESS);
-        } else {
-            // Parent process
-            // Wait for the child to exit
-            wait(NULL);
-            printf("Child process %d exited\n", pid);
+		/* Child process */
+		printf("Child process %d executing %s\n", getpid(),cmd_ln.cmd);
+		if (execve(cmd_ln.cmd, cmd_ln.args, envp) == -1)
+		{
+			perror("execve failed");
+			exit(EXIT_FAILURE);
+		}
+		exit(EXIT_SUCCESS);
         }
-    return 0;
+	else
+	{
+		/* Parent process */
+		/* Wait for the child to exit */
+		wait(NULL);
+		printf("Child process %d exited\n", pid);
+	}
+	return 0;
 }
+
 int main ()
 {
 	char *buffer;
-	char **cmd_ln = NULL;
+	cmd_args cmd_ln = {NULL, NULL};
 	size_t buffsize = 4095;
 	ssize_t bytes_read;
 
@@ -94,7 +115,8 @@ int main ()
 	{
 		printf("$ ");
 		bytes_read = getline(&buffer, &buffsize, stdin);
-		/*if bytes_read = 1 restart loop */
+		if (bytes_read == 1)
+			continue;
 		if (strncmp(buffer, "exit", 4) == 0)
 			break;
 		cmd_ln = tokenize(buffer, " ");
