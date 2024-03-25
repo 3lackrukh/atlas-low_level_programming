@@ -44,18 +44,29 @@ char **tokenize(char *buffer, char *delimiter)
 }
 int forkcecute(char **cmd_ln) 
 {
-    pid_t pid;
-    char *args[] = {"ls", "-l", "/tmp", NULL};
-    char *envp[] = {NULL};
+	int i = 0;
+	pid_t pid;
+	//char *args[]= {"ls", "-l", "/tmp", NULL};
+	char *envp[] = {NULL};
 
-    pid = fork();
-    if (pid == -1) {
-        perror("fork failed");
-        exit(EXIT_FAILURE);
-    } else if (pid == 0) {
-            // Child process
-            printf("Child process %d executing ls -l /tmp\n", getpid());
-            if (execve("/bin/ls", args, envp) == -1) {
+	/* Check for empty arg array */
+	if (cmd_ln == NULL || cmd_ln[0] == NULL)
+	{
+		perror("forkcecute cmd_ln empty");
+		return (-1);
+	}
+	
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("fork failed");
+		return (-1);
+	}
+	else if (pid == 0)
+	{
+		// Child process
+		printf("Child process %d executing ls -l /tmp\n", getpid());
+		if (execve(cmd_ln[0], cmd_ln, envp) == -1) {
                 perror("execve failed");
                 exit(EXIT_FAILURE);
             }
@@ -83,10 +94,11 @@ int main ()
 	{
 		printf("$ ");
 		bytes_read = getline(&buffer, &buffsize, stdin);
+		/*if bytes_read = 1 restart loop */
 		if (strncmp(buffer, "exit", 4) == 0)
 			break;
 		cmd_ln = tokenize(buffer, " ");
-		forkcecute(cmd_ln[0]
+		forkcecute(cmd_ln);
 	}
 	free(buffer);
 	return (0);
