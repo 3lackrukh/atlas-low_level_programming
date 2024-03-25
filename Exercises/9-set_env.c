@@ -13,6 +13,16 @@ typedef struct envar_node
 
 int _setenv(const char *name, const char *value, int overwrite)
 {
+	extern char **environ;
+	envar_node *head = NULL;
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
+                head = create_node(head, environ[i]);
+
+
+
+
 
 }
 
@@ -53,28 +63,16 @@ envar_node *create_node(envar_node *head, char *env_var)
 int main(int argc, char *argv[], char *env[])
 {
 	int i = 0;
-	char *name;
-	char *value;
 	envar_node *head = NULL;
 
-	if (argc < 2)
+	if (argc != 4)
 	{
-		printf("Please supply an environment variable and its value");
-		return (-1);
+		printf("Usage: %s name value overwrite\n", argv[0]);
+		return (1);
 	}
 	while (env[i] != NULL)
 		head = create_node(head, env[i]);
 
-	name = strdup(argv[1]);
-	if (name == NULL)
-	{
-		printf("Failed to allocate memory for variable %s\n", argv[1]);
-		return (-1);
-	}
-	value = strdup(argv[2]);
-	if (value == NULL);
-	{
-		printf("Failed to allocate memory for value %s\n", argv[2]);
-		return (-1);
+
 	}
 }
