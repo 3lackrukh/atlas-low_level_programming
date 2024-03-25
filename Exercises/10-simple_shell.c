@@ -37,12 +37,37 @@ char **tokenize(char *buffer, char *delimiter)
 			return (NULL);
 		}
 		i++;
-		portion = strtok(NULL, "delimiter");
+		portion = strtok(NULL, delimiter);
 	}
 	array[i] = NULL;
 	return (array);
 }
+int forkcecute(char **cmd_ln) 
+{
+    pid_t pid;
+    char *args[] = {"ls", "-l", "/tmp", NULL};
+    char *envp[] = {NULL};
 
+    pid = fork();
+    if (pid == -1) {
+        perror("fork failed");
+        exit(EXIT_FAILURE);
+    } else if (pid == 0) {
+            // Child process
+            printf("Child process %d executing ls -l /tmp\n", getpid());
+            if (execve("/bin/ls", args, envp) == -1) {
+                perror("execve failed");
+                exit(EXIT_FAILURE);
+            }
+            exit(EXIT_SUCCESS);
+        } else {
+            // Parent process
+            // Wait for the child to exit
+            wait(NULL);
+            printf("Child process %d exited\n", pid);
+        }
+    return 0;
+}
 int main ()
 {
 	char *buffer;
@@ -61,7 +86,7 @@ int main ()
 		if (strncmp(buffer, "exit", 4) == 0)
 			break;
 		cmd_ln = tokenize(buffer, " ");
-
+		forkcecute(cmd_ln[0]
 	}
 	free(buffer);
 	return (0);
